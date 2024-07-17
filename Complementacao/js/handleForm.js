@@ -19,14 +19,22 @@ function setAsActive(e){
     $(e.target).addClass("active");
 }
 
-$(document).on("click", function(e){
-   console.log("Você clicou em algum lugar do documento!", e);
-});
+// $(document).on("click", function(e){
+//    console.log("Você clicou em algum lugar do documento!", e);
+// });
 
 $(header).on("click", function(e){
     setAsActive(e);
-    var pageName = e.target.text;
-    $("#includedContent").load('pages/' + pageName + '.html');
+    // var pageName = e.target.text.toLowerCase();
+    // //pageName = pageName[0].toUpperCase() + pageName.slice(1);
+    // $("#includedContent").load('pages/' + pageName + '.php');
+});
+
+$.ajax({
+    url: 'myFunctions.php',
+    type: 'post',
+    data: { "callFunc1": "1"},
+    success: function(response) { alert(response); }
 });
 
 // $("#headerEl").find('a').on("click", function(e) {    
